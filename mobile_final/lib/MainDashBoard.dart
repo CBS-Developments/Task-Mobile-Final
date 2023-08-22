@@ -1,17 +1,19 @@
 import 'dart:convert';
 
-import 'package:cbs_task/CreateMainTask.dart';
-import 'package:cbs_task/CreateSubTask.dart';
-import 'package:cbs_task/EditMainTask.dart';
-import 'package:cbs_task/Login.dart';
-import 'package:cbs_task/SubTaskDashBoard.dart';
-import 'package:cbs_task/TaskLog.dart';
-import 'package:cbs_task/task.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:mobile_final/task.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'CreateMainTask.dart';
+import 'CreateSubTask.dart';
+import 'EditMainTask.dart';
+import 'Login.dart';
+import 'SubTaskDashBoard.dart';
+import 'TaskLog.dart';
 
 class MainDashBoard extends StatefulWidget {
   const MainDashBoard({Key key}) : super(key: key);
@@ -79,7 +81,7 @@ class MainDashBoardState extends State<MainDashBoard> {
 
     const url = "http://dev.connect.cbs.lk/mainTaskList.php";
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",
@@ -192,7 +194,7 @@ class MainDashBoardState extends State<MainDashBoard> {
     };
 
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",
@@ -631,7 +633,7 @@ class MainDashBoardState extends State<MainDashBoard> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const CreateSubTask()),
+                      builder: (context) =>  CreateSubTask()),
                 );
               },
             ),
@@ -764,7 +766,7 @@ class MainDashBoardState extends State<MainDashBoard> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) {
-                      return const TaskLog();
+                      return  TaskLog();
                     }),
                   );
                 },
@@ -781,7 +783,7 @@ class MainDashBoardState extends State<MainDashBoard> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) {
-                      return const LoginPage();
+                      return  LoginPage();
                     }),
                   );
                 },
@@ -1091,7 +1093,7 @@ class MainDashBoardState extends State<MainDashBoard> {
             onPressed: () async {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CreateMainTask()),
+                MaterialPageRoute(builder: (context) => CreateMainTask()),
               );
             },
             backgroundColor: Colors.deepPurple,

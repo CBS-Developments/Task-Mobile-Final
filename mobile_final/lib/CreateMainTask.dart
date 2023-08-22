@@ -127,7 +127,7 @@ class CreateMainTaskState extends State<CreateMainTask> {
     };
 
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",
@@ -227,7 +227,7 @@ class CreateMainTaskState extends State<CreateMainTask> {
     };
 
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",

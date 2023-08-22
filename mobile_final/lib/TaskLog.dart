@@ -1,14 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:cbs_task/CreateSubTask.dart';
-import 'package:cbs_task/EditMainTask.dart';
-import 'package:cbs_task/MainDashBoard.dart';
-import 'package:cbs_task/task.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:mobile_final/task.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'CreateSubTask.dart';
+import 'EditMainTask.dart';
+import 'MainDashBoard.dart';
 
 class TaskLog extends StatefulWidget {
   const TaskLog({Key key}) : super(key: key);
@@ -44,7 +46,7 @@ class TaskLogState extends State<TaskLog> {
 
     const url = "http://dev.connect.cbs.lk/taskLogListByMonth.php";
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",
@@ -350,7 +352,7 @@ class TaskLogState extends State<TaskLog> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const CreateSubTask()),
+                      builder: (context) =>  CreateSubTask()),
                 );
               },
             ),
@@ -378,7 +380,7 @@ class TaskLogState extends State<TaskLog> {
                 if (!mounted) return;
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const EditMainTask()),
+                  MaterialPageRoute(builder: (context) =>  EditMainTask()),
                 );
               },
             ),
@@ -411,7 +413,7 @@ class TaskLogState extends State<TaskLog> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return const MainDashBoard();
+              return  MainDashBoard();
             },
           ),
         );

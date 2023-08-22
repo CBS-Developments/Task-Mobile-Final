@@ -1,13 +1,15 @@
 import 'dart:convert';
 
-import 'package:cbs_task/SubTaskDashBoard.dart';
-import 'package:cbs_task/task.dart';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:mobile_final/task.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // ignore: unused_import
 import 'dart:io';
+
+import 'SubTaskDashBoard.dart';
 
 class MainTaskComments extends StatefulWidget {
   const MainTaskComments({Key key}) : super(key: key);
@@ -58,7 +60,7 @@ class _MainTaskCommentsState extends State<MainTaskComments> {
     };
 
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",
@@ -93,7 +95,7 @@ class _MainTaskCommentsState extends State<MainTaskComments> {
 
     const url = "http://dev.connect.cbs.lk/commentListById.php";
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",
@@ -139,7 +141,7 @@ class _MainTaskCommentsState extends State<MainTaskComments> {
     };
 
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",

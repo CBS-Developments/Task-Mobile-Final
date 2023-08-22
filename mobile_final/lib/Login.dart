@@ -1,11 +1,12 @@
 import 'dart:convert';
 
-import 'package:cbs_task/MainDashBoard.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'MainDashBoard.dart';
 import 'task.dart';
 
 class LoginPage extends StatefulWidget {
@@ -153,7 +154,7 @@ class _State extends State<LoginPage> {
     };
 
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",

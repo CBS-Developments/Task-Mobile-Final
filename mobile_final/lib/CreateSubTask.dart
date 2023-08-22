@@ -151,7 +151,7 @@ class CreateSubTaskState extends State<CreateSubTask> {
     };
 
     http.Response res = await http.post(
-      url,
+      Uri.parse(url),
       body: data,
       headers: {
         "Accept": "application/json",

@@ -1,8 +1,9 @@
-import 'package:cbs_task/Login.dart';
-import 'package:cbs_task/MainDashBoard.dart';
-import 'package:cbs_task/Scanner.dart';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'Login.dart';
+import 'MainDashBoard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
